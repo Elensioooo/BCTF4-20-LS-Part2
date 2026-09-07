@@ -1,4 +1,4 @@
---Lecture#2
+--Lecture#2 - (SQL ქუერები და რელაცია)
 
 --მთლიანი ცხრილი გამოვიტანე
 SELECT * FROM STUDENTS
