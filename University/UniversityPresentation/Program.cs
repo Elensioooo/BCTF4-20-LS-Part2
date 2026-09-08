@@ -13,14 +13,32 @@ namespace UniversityPresentation
             IStudentRepository studentRepository = new StudentRepository(_connectionString);
             StudentService studentService = new StudentService(studentRepository);
 
+            IInstructorRepository instructorRepository = new InstructorRepository(_connectionString);
+            InstructorService instructorService = new InstructorService(instructorRepository);
+
             //ყველა სტუდენტის გამოტანა
-            studentService.GetAllStudents();
+            var students = studentService.GetAllStudents();
+            foreach (var student in students)
+            {
+                Console.WriteLine(student.ToString());
+            }
             //StudentService.GetById(1);
             //აქ ვიძახებ იმ კონკსტრუქტორს, რომელსაც აიდი არ აქვს. ანუ დასამატებლად გასაკეთბელ კონსტრუქტორს
-            Student newStudent = new Student("გიორგი", "giorgi.beridze@gmail.com", 23, 3.75m, true, new DateTime(2026, 8, 29), "555123789", 5);
-            bool result = studentService.Add(newStudent);
-            Console.WriteLine(result); // ჩაემატა
+            //Student newStudent = new Student("გიორგი", "giorgi.beridze@gmail.com", 23, 3.75m, true, new DateTime(2026, 8, 29), "555123789", 5);
+            //bool result = studentService.Add(newStudent);
+            //Console.WriteLine(result); // ჩაემატა
 
+
+            //ყველა ინსტრუქტორი
+            var instructors = instructorService.GetAllInstructors();
+            foreach(var instructor in instructors)
+            {
+                Console.WriteLine(instructor.ToString());
+            }
+
+            Instructor instructor5 = new Instructor(6, "Giorgi", "barbaqadze", "gio@gmail.com");
+            instructorService.UpdateInstructor(instructor5);
+            instructorService.DeleteInstructor(instructor5);//მგონი ჯობია რომ მეთოდი დავამატო, სადაც აიდით წაშლის ინსტრუქტორს
 
         }
 

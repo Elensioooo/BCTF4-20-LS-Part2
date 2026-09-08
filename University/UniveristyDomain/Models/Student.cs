@@ -47,5 +47,11 @@ namespace UniveristyDomain.Models
         public string? PhoneNumber { get; set; }
         public int? FacutlyId { get; set; }
 
+
+        public override string ToString()
+        {
+            return $"Id: {ID}, FirstName: {FirstName}, Email: {Email}, Age: {Age}, GPA: " +
+                $"{GPA}, IsActive: {IsActive}, RegisteredDate: {Registered}, FacutlyId: {FacutlyId}";
+        }
     }
 }
